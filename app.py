@@ -74,8 +74,23 @@ elif st.session_state.step == 4:
     st.header("🎉 專屬於您的媒合雷達圖")
     st.write("根據您的回覆與系統資料庫比對，這是您的生活適配分析 [cite: 89]：")
     
-    # 這裡放原本的 Plotly 雷達圖程式碼...
-    # (為節省長度略過重複的雷達圖 code)
+# 這裡放原本的 Plotly 雷達圖程式碼...
+import plotly.graph_objects as go
+
+# 準備數據
+categories = ['作息', '清潔', '互動', '隱私', '安靜']
+user_values = [st.session_state.get('sleep_val', 5), st.session_state.get('clean_val', 5), 5, 5, 5]
+target_values = [8, 7, 6, 8, 9]
+
+fig = go.Figure()
+fig.add_trace(go.Scatterpolar(r=user_values, theta=categories, fill='toself', name='您的特質'))
+fig.add_trace(go.Scatterpolar(r=target_values, theta=categories, fill='toself', name='理想對象'))
+
+# 渲染圖表
+st.plotly_chart(fig, use_container_width=True)
+
+    
+# (為節省長度略過重複的雷達圖 code)
     
     st.success("✅ 系統顯示：您與潛在對象在『生活節奏』上非常契合！")
     st.info("💡 下一步建議：系統已準備好『數位生活公約』草案，建議您與對方預約線上聊聊 [cite: 42, 71]。")
