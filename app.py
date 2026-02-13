@@ -104,13 +104,18 @@ elif role == "青年房客 (Youth)":
         y_smoke = st.selectbox("🚬 您的吸菸習慣？", ["我不吸菸", "僅特定區域", "有菸習慣"], key="y_smoke")
         y_pet = st.selectbox("🐾 您有攜帶寵物嗎？", ["無寵物", "有小型寵物", "有大型寵物"], key="y_pet")
         
-    with tab_y2:
+   with tab2:
         st.subheader("🟡 第二層：互助內容與作息")
-        st.write("定義您願意提供的生活互助項目（技能交換）：")
+        st.write("定義您願意提供的生活互助項目：")
         y_help = st.multiselect("我願意提供：", ["3C 產品教學", "順手代丟垃圾", "每週一次共食", "協助代收掛號"], default=["3C 產品教學"])
-        y_sleep = st.slider("🌙 您的作息規律 (1:早起 - 10:熬夜族)", 1, 10, 5)
-        y_clean = st.slider("🧹 您對環境整潔的要求？", 1, 10, 5)
-        st.caption("明確的互助項目能有效降低共居初期的認知落差。")
+        
+        # 修正後的互動滑桿
+        y_sleep = st.slider("🌙 您的作息規律 (1:早起 - 10:熬夜族)", 1, 10, 7, key="y_sleep_slider")
+        y_clean = st.slider("🧹 您對環境整潔的要求？(1:隨興 - 10:極致)", 1, 10, 8, key="y_clean_slider")
+        
+        # 將數據存入 session_state
+        st.session_state.y_data = [y_sleep, y_clean, 7, 7, 8]
+        st.caption("💡 拖動滑桿即可調整您的數值，這些數據將反映在最後的分析圖中。")
 
     with tab_y3:
         st.subheader("🎉 您的適配分析報告")
