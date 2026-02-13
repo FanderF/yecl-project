@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.graph_objects as go
 
 # 1. 頁面配置與佈局優化 [cite: 112]
-st.set_page_config(page_title="My YECL 溫馨共居平台", layout="wide")
+st.set_page_config(page_title="致理溫馨共居平台", layout="wide")
 st.markdown("""
     <style>
     .main { background-color: #FFFAF0; }
@@ -21,7 +21,7 @@ st.sidebar.info("""
 """)
 
 # 3. 標題與研究引言 [cite: 4]
-st.title("🏡 My YECL：共居不只是租屋 [cite: 7]")
+st.title("🏡 致理愛生活：共居不只是租屋 [cite: 7]")
 st.write("透過制度化設計，為跨世代共居提供穩定且具安全感的媒合流程 。")
 
 # 初始化進度狀態
